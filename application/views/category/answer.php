@@ -10,5 +10,10 @@
 			 <strong>Wrong!</strong> Your answer is incorrect.
 		</div>
 	<?php } ?>
+
+	<div class="hero-unit"> 
+		<h2>Solution</h2>
+		<code><?php echo $solution ?></code>
+	</div>
 		<a class="btn" href="<?php echo base_url('index.php/category/next') ?>">Next Question</a>
 </div>

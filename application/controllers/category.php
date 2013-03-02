@@ -107,14 +107,18 @@ class Category extends CI_Controller {
 
 			$this->session->set_userdata('index', $ind);
 
-			if ($this->question_model->question_answer($this->question['id'])) {
+			$ans = $this->input->post('answer');
+
+			if (strcasecmp ($ans, $this->question['answer']) == 0) {
 				$data['answer'] = "TRUE";
 			} else {
 				$data['answer'] = "FALSE";
 			}
 
+			$data['solution'] = $this->question['solution'];
+
 			$this->load->view('include/header', $data);	
-			$this->load->view('category/answer');
+			$this->load->view('category/answer', $data);
 			$this->load->view('include/footer');
 		}
 	}
