@@ -8,7 +8,7 @@
 
 			<fieldset>
 				<label for="name">Question</label> 
-				<input type="text" name="question">
+				<textarea rows="5" cols="40" name="question"></textarea>
 
 				<label for="ans">Answer</label> 
 				<textarea rows="5" cols="40" name="answer"></textarea>

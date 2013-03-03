@@ -41,6 +41,7 @@ $route['category/create'] = 'category/create';
 $route['category/index'] = 'category';
 $route['category/answer'] = 'category/answer';
 $route['category'] = 'category';
+$route['admin/index'] = 'admin';
 $route['default_controller'] = "frontpage";
 $route['404_override'] = '';
 

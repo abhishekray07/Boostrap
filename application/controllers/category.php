@@ -152,4 +152,27 @@ class Category extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 	}
+
+	public function delete() {
+
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$data['category'] = $this->category_model->get_category_all();	
+
+		$this->form_validation->set_rules('category', 'Category', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('include/header');	
+			$this->load->view('category/delete', $data);
+			$this->load->view('include/footer');
+		} else{
+			$cat_id = $this->input->post('category');
+			$this->category_model->delete_category($cat_id);
+			$this->question_model->delete_question_cat($cat_id);
+			$this->load->view('include/header');	
+			$this->load->view('category/delete_success');
+			$this->load->view('include/footer');
+		}
+	}
 }

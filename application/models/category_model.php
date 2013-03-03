@@ -31,4 +31,10 @@ class category_model extends CI_Model {
 		
 		return $this->db->insert('category', $data);
 	}
+
+	public function delete_category($cat_id) {
+		$this->db->delete('category', array('id' => $cat_id)); 
+	}
+
+
 }

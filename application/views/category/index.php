@@ -1,7 +1,5 @@
 <div class="container">
 
-	<a class="btn btn-primary" href="<?php echo base_url('index.php/category/create') ?>">Create a new subject</a>
-	<a class="btn btn-primary" href="<?php echo base_url('index.php/question/create') ?>">Create a new question</a>
 	<p>
 		<div class="hero-unit">
 			<div class="page-header">

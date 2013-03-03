@@ -32,4 +32,25 @@ class Question extends CI_Controller {
 			$this->load->view('include/footer');
 		}
 	}
+
+	public function delete() {
+
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$data['questions'] = $this->question_model->get_all_questions();	
+
+		$this->form_validation->set_rules('question', 'Question', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('include/header');	
+			$this->load->view('question/delete', $data);
+			$this->load->view('include/footer');
+		} else{
+			$this->question_model->delete_question($this->input->post('question'));
+			$this->load->view('include/header');	
+			$this->load->view('question/delete_success');
+			$this->load->view('include/footer');
+		}
+	}
 }

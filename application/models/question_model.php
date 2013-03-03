@@ -5,6 +5,12 @@ class question_model extends CI_Model {
 		$this->load->database();
 	}
 
+	public function get_all_questions() {
+		
+		$query = $this->db->get('question');
+		return $query->result_array();
+	}
+
 	public function get_questions_all($category_id) {
 		
 		$query = $this->db->get_where('question', array('cat_id' => $category_id));
@@ -45,4 +51,13 @@ class question_model extends CI_Model {
 		}
 
 	}
+
+	public function delete_question($qid) {
+		$this->db->delete('question', array('id' => $qid)); 
+	}
+
+	public function delete_question_cat($catid) {
+		$this->db->delete('question', array('cat_id' => $catid)); 
+	}
+
 }
