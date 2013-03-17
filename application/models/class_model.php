@@ -5,6 +5,12 @@ class class_model extends CI_Model {
 		$this->load->database();
 	}
 
+	public function get_all_class_val() {
+		
+		$query = $this->db->get('class');
+		return $query->result_array();
+	}
+
 	public function get_claass_id($id) {
 		$query = $this->db->get_where('class', array('id' => $id));
 		return $query->row_array();
@@ -15,19 +21,20 @@ class class_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function set_category()
+	public function set_class_val()
 	{
 		$this->load->helper('url');
 		
 		$data = array(
-			'name' => $this->input->post('name'),
+			'cat_id' => $this->input->post('category_id'),
+			'name' => $this->input->post('className'),
 		);
 		
-		return $this->db->insert('category', $data);
+		return $this->db->insert('class', $data);
 	}
 
-	public function delete_category($cat_id) {
-		$this->db->delete('category', array('id' => $cat_id)); 
+	public function delete_class_val($classId) {
+		$this->db->delete('class', array('id' => $classId)); 
 	}
 
 

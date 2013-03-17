@@ -25,22 +25,19 @@ class Claass extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		
-		$data['title'] = 'Create a news item';
-		
-		$this->form_validation->set_rules('name', 'Name', 'required');
-		
-		if ($this->form_validation->run() === FALSE)
-		{
-			$this->load->view('include/header', $data);	
-			$this->load->view('category/create');
+		$data['category'] = $this->category_model->get_category_all();
+
+		$this->form_validation->set_rules('className', 'Class Name', 'required');
+		$this->form_validation->set_rules('category_id', 'Category Id', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('include/header');	
+			$this->load->view('class/create', $data);
 			$this->load->view('include/footer');
-			
-		}
-		else
-		{
-			$this->category_model->set_category();
+		} else{
+			$this->class_model->set_class_val();
 			$this->load->view('include/header', $data);	
-			$this->load->view('category/success');
+			$this->load->view('class/success');
 			$this->load->view('include/footer');
 		}
 	}

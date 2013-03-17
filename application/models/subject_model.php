@@ -15,20 +15,19 @@ class subject_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function set_category()
+	public function set_subject()
 	{
 		$this->load->helper('url');
 		
 		$data = array(
-			'name' => $this->input->post('name'),
+			'class_id' => $this->input->post('class_id'),
+			'name' => $this->input->post('subjectName'),
 		);
 		
-		return $this->db->insert('category', $data);
+		return $this->db->insert('subject', $data);
 	}
 
 	public function delete_category($cat_id) {
 		$this->db->delete('category', array('id' => $cat_id)); 
 	}
-
-
 }

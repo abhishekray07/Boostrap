@@ -3,6 +3,8 @@ class Subject extends CI_Controller {
 
 	public function __construct()	{
 		parent::__construct();
+
+		$this->load->model('class_model');
 		$this->load->model('subject_model');
 		$this->load->model('paper_model');
 	}
@@ -23,22 +25,24 @@ class Subject extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		
-		$data['title'] = 'Create a news item';
-		
-		$this->form_validation->set_rules('name', 'Name', 'required');
+		$data['claass'] = $this->class_model->get_all_class_val();
+
+		$this->form_validation->set_rules('subjectName', 'Subject Name', 'required');
+		$this->form_validation->set_rules('class_id', 'Class', 'required');
+
 		
 		if ($this->form_validation->run() === FALSE)
 		{
 			$this->load->view('include/header', $data);	
-			$this->load->view('category/create');
+			$this->load->view('subject/create');
 			$this->load->view('include/footer');
 			
 		}
 		else
 		{
-			$this->category_model->set_category();
+			$this->subject_model->set_subject();
 			$this->load->view('include/header', $data);	
-			$this->load->view('category/success');
+			$this->load->view('subject/success');
 			$this->load->view('include/footer');
 		}
 	}
