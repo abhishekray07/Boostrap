@@ -27,6 +27,8 @@
        <a class="brand" href="<?php echo base_url('index.php/category/') ?>">GoToSkool</a>
        <ul class="nav">
          <li class="active"><a href="<?php echo base_url('index.php/category/') ?>">Home</a></li>
+         <li><a href="<?php echo base_url('index.php/calendar/') ?>">Calendar</a></li>
+
            <ul class="nav">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -35,13 +37,13 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a href="#">Primary</a>
+                  <a href="<?php echo base_url('index.php/category/view/1') ?>">Primary</a>
                 </li>
                 <li>
-                  <a href="#">Secondary</a>
+                  <a href="<?php echo base_url('index.php/category/view/2') ?>">Secondary</a>
                 </li>
                 <li>
-                  <a href="#">Tertiary</a>
+                  <a href="<?php echo base_url('index.php/category/view/3') ?>">Tertiary</a>
                 </li>
               </ul>
             </li>

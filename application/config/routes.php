@@ -41,6 +41,7 @@ $route['category/create'] = 'category/create';
 $route['category/index'] = 'category';
 $route['category/answer'] = 'category/answer';
 $route['category'] = 'category';
+$route['calendar'] = 'calendar';
 $route['admin/index'] = 'admin';
 $route['upload/index'] = 'upload';
 $route['default_controller'] = "frontpage";
