@@ -9,16 +9,15 @@
 
    <title>GoToSkool</title>
 
-   <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-   <link href="<?php echo base_url('assets/css/bootstrap.css') ?>" rel="stylesheet">
-	<link href="<?php echo base_url('assets/css/font-awesome.css') ?>" rel="stylesheet">
-   <link href="<?php echo base_url('assets/css/custom.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/font-awesome.css') ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/css/custom.css') ?>" rel="stylesheet">
 
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-   <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
-   <script src="<?php echo base_url('assets/js/bootstrap.js') ?>"></script>
-	<script src="<?php echo base_url('assets/js/custom.js') ?>"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+  <script src="<?php echo base_url('assets/js/custom.js') ?>"></script>
+  <script src="<?php echo base_url('assets/js/submitBtn.js') ?>"></script>
 </head>
 <body>
 
@@ -28,16 +27,25 @@
        <a class="brand" href="<?php echo base_url('index.php/category/') ?>">GoToSkool</a>
        <ul class="nav">
          <li class="active"><a href="<?php echo base_url('index.php/category/') ?>">Home</a></li>
-           <li class="dropdown">
-             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-               Subjects
-               <b class="caret"></b>
-             </a>
-             <ul class="dropdown-menu">
-               <a href="#"><li>English</li></a>
-               <a href="#"><li>Maths</li></a>
-             </ul>
-           </li>
+           <ul class="nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Courses
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">Primary</a>
+                </li>
+                <li>
+                  <a href="#">Secondary</a>
+                </li>
+                <li>
+                  <a href="#">Tertiary</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
        </ul>
      </div>
    </div>
