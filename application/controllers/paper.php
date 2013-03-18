@@ -38,6 +38,57 @@
             $this->load->view('include/footer');
         }
 
+        public function selectClass() {
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+
+            $data['claass'] = $this->class_model->get_all_class_val();  
+
+            $this->form_validation->set_rules('claass', 'Class', 'required');
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->load->view('include/header');    
+                $this->load->view('paper/selectClass', $data);
+                $this->load->view('include/footer');
+            } else{
+                $id = $this->input->post('claass');
+                $this->session->set_userdata('classIndex', $id);
+
+                $data['subjects'] = $this->subject_model->get_subject_class($id);
+                
+                $this->load->view('include/header');    
+                $this->load->view('paper/selectSubject', $data);
+                $this->load->view('include/footer');
+            }
+        }
+
+        public function selectSubject() {
+
+            $this->load->helper('form');
+            $this->load->library('form_validation');    
+
+            $id = $this->session->userdata('classIndex');
+            $data['subjects'] = $this->subject_model->get_subject_class($id);
+
+            $this->form_validation->set_rules('subject', 'Subject', 'required');
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->load->view('include/header');    
+                $this->load->view('paper/selectSubject', $data);
+                $this->load->view('include/footer');
+            } else{
+                $id = $this->input->post('subject');
+                $this->session->set_userdata('subjectIndex', $id);
+
+                $data['subjectId'] = $id;
+
+                $this->load->view('include/header'); 
+                $this->load->view('paper/create', $data);
+                $this->load->view('include/footer');
+            }
+        }
+
     	public function create()
     	{
             $this->load->library('form_validation');
@@ -46,6 +97,9 @@
             $this->form_validation->set_rules('name', 'Name', 'required');
             $this->form_validation->set_rules('subject_id', 'Subject Id', 'required');
             
+            $id = $this->session->userdata('subjectIndex');
+            $data['subjectId'] = $id;
+
             $config['upload_path'] = './uploads/';
             $config['allowed_types'] = 'gif|jpg|png|pdf';
             $config['max_size'] = '1000';
@@ -61,7 +115,7 @@
                 }
 
                 $this->load->view('include/header'); 
-                $this->load->view('paper/create');
+                $this->load->view('paper/create', $data);
                 $this->load->view('include/footer');
                 
             } else{
@@ -69,7 +123,7 @@
                 if (!$this->upload->do_upload('userfile1')) {
                     $error = array('error' => $this->upload->display_errors());
                     $this->load->view('include/header'); 
-                    $this->load->view('paper/create');
+                    $this->load->view('paper/create', $data);
                     $this->load->view('include/footer');
                 } else {
                     # code...
@@ -80,7 +134,7 @@
                 if (!$this->upload->do_upload('userfile2')) {
                     $error = array('error' => $this->upload->display_errors());
                     $this->load->view('include/header'); 
-                    $this->load->view('paper/create');
+                    $this->load->view('paper/create', $data);
                     $this->load->view('include/footer');
                 } else {
                     # code...

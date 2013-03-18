@@ -15,8 +15,7 @@ class subject_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function set_subject()
-	{
+	public function set_subject(){
 		$this->load->helper('url');
 		
 		$data = array(
@@ -27,7 +26,7 @@ class subject_model extends CI_Model {
 		return $this->db->insert('subject', $data);
 	}
 
-	public function delete_category($cat_id) {
-		$this->db->delete('category', array('id' => $cat_id)); 
+	public function delete_subject($id) {
+		$this->db->delete('subject', array('id' => $id)); 
 	}
 }

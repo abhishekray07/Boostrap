@@ -48,20 +48,19 @@ class Claass extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$data['category'] = $this->category_model->get_category_all();	
+		$data['claass'] = $this->class_model->get_all_class_val();	
 
-		$this->form_validation->set_rules('category', 'Category', 'required');
+		$this->form_validation->set_rules('claass', 'Class', 'required');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('include/header');	
-			$this->load->view('category/delete', $data);
+			$this->load->view('class/delete', $data);
 			$this->load->view('include/footer');
 		} else{
-			$cat_id = $this->input->post('category');
-			$this->category_model->delete_category($cat_id);
-			$this->question_model->delete_question_cat($cat_id);
+			$id = $this->input->post('claass');
+			$this->class_model->delete_class_val($id);
 			$this->load->view('include/header');	
-			$this->load->view('category/delete_success');
+			$this->load->view('class/delete_success');
 			$this->load->view('include/footer');
 		}
 	}

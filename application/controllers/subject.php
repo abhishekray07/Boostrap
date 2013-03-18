@@ -7,6 +7,8 @@ class Subject extends CI_Controller {
 		$this->load->model('class_model');
 		$this->load->model('subject_model');
 		$this->load->model('paper_model');
+
+		$this->load->library('session');
 	}
 
 
@@ -47,26 +49,52 @@ class Subject extends CI_Controller {
 		}
 	}
 
-
-	public function delete() {
+	public function selectClass() {
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$data['category'] = $this->category_model->get_category_all();	
+		$data['claass'] = $this->class_model->get_all_class_val();	
 
-		$this->form_validation->set_rules('category', 'Category', 'required');
+		$this->form_validation->set_rules('claass', 'Class', 'required');
 
 		if ($this->form_validation->run() === FALSE) {
 			$this->load->view('include/header');	
-			$this->load->view('category/delete', $data);
+			$this->load->view('subject/selectClass', $data);
 			$this->load->view('include/footer');
 		} else{
-			$cat_id = $this->input->post('category');
-			$this->category_model->delete_category($cat_id);
-			$this->question_model->delete_question_cat($cat_id);
+			$id = $this->input->post('claass');
+			$this->session->set_userdata('classIndex', $id);
+
+			$data['subjects'] = $this->subject_model->get_subject_class($id);
+			
 			$this->load->view('include/header');	
-			$this->load->view('category/delete_success');
+			$this->load->view('subject/delete', $data);
+			$this->load->view('include/footer');
+		}
+	}
+
+
+	public function delete() {
+
+		$this->load->helper('form');
+		$this->load->library('form_validation');	
+
+		$id = $this->session->userdata('classIndex');
+		$data['subjects'] = $this->subject_model->get_subject_class($id);
+
+		$this->form_validation->set_rules('subject', 'Subject', 'required');
+
+		if ($this->form_validation->run() === FALSE) {
+			$this->load->view('include/header');	
+			$this->load->view('subject/delete', $data);
+			$this->load->view('include/footer');
+		} else{
+			$id = $this->input->post('subject');
+			$this->subject_model->delete_subject($id);
+
+			$this->load->view('include/header');	
+			$this->load->view('subject/delete_success');
 			$this->load->view('include/footer');
 		}
 	}

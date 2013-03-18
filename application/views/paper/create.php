@@ -17,8 +17,7 @@
 				<label for="ans">Number of Questions</label> 
 				<input type="text" name="num_question" />
 
-				<label for="sol">Subject Id</label> 
-				<input type="text" name="subject_id" />
+				<input id="subject_id" name="subject_id" type="hidden" value="<?php echo $subjectId; ?>" />
 
 				<p><button type="submit" class="btn">Create</button></p>
 				
